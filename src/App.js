@@ -1,14 +1,16 @@
 import React from "react";
 import "./App.css";
+import Header from "./components/Header";
+import Main from "./components/Main";
+import Footer from "./components/Footer";
 
 function App() {
 	return (
-		<main>
-			<div className="hero-container">
-				<h1>raiabril.com</h1>
-				<p>Work in progress</p>
-			</div>
-		</main>
+		<React.Fragment>
+			<Header />
+			<Main />
+			<Footer />
+		</React.Fragment>
 	);
 }
 
