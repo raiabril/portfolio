@@ -4,7 +4,10 @@ import "./App.css";
 function App() {
 	return (
 		<main>
-			<h1>raiabril.com</h1>
+			<div className="hero-container">
+				<h1>raiabril.com</h1>
+				<p>Work in progress</p>
+			</div>
 		</main>
 	);
 }

@@ -1,3 +1,11 @@
+:root {
+  --black: #00001f;
+  --purple: #4b47ff;
+  --light: #ffffcc;
+  --green: #1cb196;
+  --blue: #4444bb;
+}
+
 body {
   margin: 0;
   min-height: 100vh !important;
@@ -7,6 +15,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: linear-gradient(45deg, var(--blue), var(--green));
+  color: var(--light);
 }
 
 code {
