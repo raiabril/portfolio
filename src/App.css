@@ -22,14 +22,14 @@ p {
 	font-size: 16px;
 }
 a {
-	border-bottom: 1px solid white;
-	color: #0076ff;
+
+	color: white;
 	cursor: pointer;
 	text-decoration: none;
 	transition: all 0.2s ease;
 }
 a:hover {
-	border-bottom: 1px solid #0076ff;
+	transform: scale(1.1);
 }
 code,
 pre {
@@ -55,4 +55,20 @@ code:after {
 	100% {
 		transform: translateY(0px);
 	}
+}
+
+.hero-cards {
+	display: flex;
+	justify-content:center;
+	align-items:center;
+	flex-wrap: wrap;
+}
+
+.hero-card {
+	width: 33%;
+	border-radius: 0.5rem;
+	border: solid white 0.2rem;
+	margin: 2rem;
+	width: auto;
+	padding: 2rem;
 }
