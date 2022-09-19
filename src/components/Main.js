@@ -7,7 +7,7 @@ export default function Main() {
 				<h1>raiabril.com</h1>
 				<h3>Welcome to my personal portfolio</h3>
 				<div className="hero-cards">
-				<a href="http://u.pc.cd/R6N">
+				<a href="http://u.pc.cd/7KsctalK">
 						<div className="hero-card">
 							<img src="cv.png" width="150" height="auto" alt="Resume"></img>
 						</div></a>
