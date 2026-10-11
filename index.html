@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>raiabril.com</title>
+  <meta name="description" content="Tarjeta de presentación de Rai">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #e6edf2;
+      --card: #ffffff;
+      --ink: #14233b;
+      --muted: #55657a;
+      --accent: #1f6f8b;
+      --accent-ink: #ffffff;
+      --line: #d3dde6;
+      --font: "Bricolage Grotesque", "Segoe UI", system-ui, -apple-system, sans-serif;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #101a28;
+        --card: #182536;
+        --ink: #eaf1f7;
+        --muted: #9db0c3;
+        --accent: #62b6d1;
+        --accent-ink: #0d1722;
+        --line: #2a3b50;
+      }
+    }
+
+    * { box-sizing: border-box; margin: 0; }
+
+    html, body { min-height: 100%; }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--ink);
+      display: grid;
+      place-items: center;
+      padding: 24px 16px;
+      min-height: 100vh;
+      line-height: 1.55;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 420px;
+      background: var(--card);
+      border-radius: 20px;
+      padding: 40px 32px 32px;
+      text-align: center;
+      box-shadow: 0 1px 2px rgba(20, 35, 59, .06), 0 12px 32px rgba(20, 35, 59, .08);
+    }
+
+    .photo {
+      width: 128px;
+      height: 128px;
+      border-radius: 50%;
+      margin: 0 auto 24px;
+      overflow: hidden;
+      background: var(--accent);
+      color: var(--accent-ink);
+      display: grid;
+      place-items: center;
+      font-size: 3.5rem;
+      font-weight: 800;
+    }
+    .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    h1 {
+      font-size: clamp(2.6rem, 11vw, 3.4rem);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+    }
+
+    .title {
+      margin-top: 8px;
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+
+    .about {
+      margin: 20px auto 0;
+      color: var(--muted);
+      max-width: 34ch;
+    }
+
+    .links {
+      list-style: none;
+      padding: 0;
+      margin-top: 32px;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+      display: grid;
+      gap: 10px;
+    }
+
+    .links a {
+      display: block;
+      padding: 12px 16px;
+      border-radius: 12px;
+      border: 1.5px solid var(--line);
+      color: var(--ink);
+      font-weight: 600;
+      text-decoration: none;
+      transition: background-color .15s, border-color .15s, color .15s;
+    }
+    .links a:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: var(--accent-ink);
+    }
+    .links a:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    /* El enlace al CV es el principal */
+    .links a.primary {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: var(--accent-ink);
+    }
+    .links a.primary:hover { filter: brightness(1.08); }
+
+    @media (prefers-reduced-motion: reduce) {
+      .links a { transition: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <main class="card">
+
+    <!-- FOTO: guarda tu imagen como "foto.jpg" junto a este archivo.
+         Si no existe, se muestra la inicial de tu nombre. -->
+    <div class="photo">
+      <img src="assets/foto.jpg" alt="Foto de Rai"
+           onerror="this.remove(); document.querySelector('.photo').textContent = 'R';">
+    </div>
+
+    <!-- NOMBRE -->
+    <h1>Raimundo Abril López</h1>
+
+    <!-- TÍTULO -->
+    <p class="title">Arquitecto de transformación digital</p>
+
+    <!-- TEXTO -->
+    <p class="about">
+      Ingeniero Industrial con trayectoria en IT. Diseño cómo las empresas pasan de procesos manuales a sistemas que funcionan: arquitectura, datos, automatización e IA, con visión técnica y de negocio.
+    </p>
+
+    <!-- ENLACES: cambia las URLs y añade o quita los que quieras -->
+    <ul class="links">
+      <li><a class="primary" href="http://u.pc.cd/7KsctalK">
+        <img src="assets/cv.png" width="20" height="auto" alt="cv logo"></img> Mi currículum</a></li>
+      <li><a href="https://www.linkedin.com/in/raimundo-abril-l%C3%B3pez-a700143a/" target="_blank" rel="noopener">
+        <img src="assets/linkedin.png" width="20" height="auto" alt="linkedin logo"></img> LinkedIn</a></li>
+      <li><a href="https://github.com/raiabril/" target="_blank" rel="noopener">
+        <img src="assets/github.png" width="20" height="auto" alt="GitHub logo"></img> GitHub</a></li>
+      <li><a href="mailto:raiablp@gmail.com">Escríbeme</a></li>
+    </ul>
+
+  </main>
+
+</body>
+</html>

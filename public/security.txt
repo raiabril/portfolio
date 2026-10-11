@@ -1,3 +1,0 @@
-# Here is my contact to report issues related to security.
-
-Contact: mailto:grx6@naosinfosec.com
