@@ -1,0 +1,275 @@
+/* =========================================================
+   style.css  |  Estilos compartidos de index.html y project.html
+   - <body class="home">   -> portada (tarjeta + proyectos)
+   - <body class="detail"> -> página de un proyecto
+   ========================================================= */
+
+/* ---------- Variables (colores y tipografía) ---------- */
+:root {
+  --bg: #e6edf2;
+  --card: #ffffff;
+  --ink: #14233b;
+  --muted: #55657a;
+  --accent: #1f6f8b;
+  --accent-ink: #ffffff;
+  --tag-bg: #e3f0f5;
+  --line: #d3dde6;
+  --font: "Bricolage Grotesque", "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #101a28;
+    --card: #182536;
+    --ink: #eaf1f7;
+    --muted: #9db0c3;
+    --accent: #62b6d1;
+    --accent-ink: #0d1722;
+    --tag-bg: #223a4d;
+    --line: #2a3b50;
+  }
+}
+
+/* ---------- Base ---------- */
+* { box-sizing: border-box; margin: 0; }
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--ink);
+  padding: 40px 16px 56px;
+  min-height: 100vh;
+  line-height: 1.6;
+}
+body.detail { padding-top: 32px; }
+
+.page {
+  max-width: 720px;
+  margin: 0 auto;
+  display: grid;
+  gap: 48px;
+}
+.detail .page { gap: 20px; }
+
+a:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+/* ---------- Componentes compartidos ---------- */
+.tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag {
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: var(--tag-bg);
+  color: var(--accent);
+  font-size: .8rem;
+  font-weight: 600;
+}
+
+/* =========================================================
+   PORTADA  (body.home)
+   ========================================================= */
+
+/* Tarjeta de presentación */
+.home .card {
+  width: 100%;
+  max-width: 420px;
+  justify-self: center;
+  background: var(--card);
+  border-radius: 20px;
+  padding: 40px 32px 32px;
+  text-align: center;
+  box-shadow: 0 1px 2px rgba(20, 35, 59, .06), 0 12px 32px rgba(20, 35, 59, .08);
+}
+
+.photo {
+  width: 128px;
+  height: 128px;
+  border-radius: 50%;
+  margin: 0 auto 24px;
+  overflow: hidden;
+  background: var(--accent);
+  color: var(--accent-ink);
+  display: grid;
+  place-items: center;
+  font-size: 3.5rem;
+  font-weight: 800;
+}
+.photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.home h1 {
+  font-size: clamp(2.6rem, 11vw, 3.4rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+.title { margin-top: 8px; color: var(--accent); font-weight: 600; font-size: 1.1rem; }
+.about { margin: 20px auto 0; color: var(--muted); max-width: 34ch; }
+
+.links {
+  list-style: none;
+  padding: 24px 0 0;
+  margin-top: 32px;
+  border-top: 1px solid var(--line);
+  display: grid;
+  gap: 10px;
+}
+.links a {
+  display: block;
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 1.5px solid var(--line);
+  color: var(--ink);
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color .15s, border-color .15s, color .15s;
+}
+.links a:hover { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.links a.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.links a.primary:hover { filter: brightness(1.08); }
+
+/* Sección de proyectos */
+.projects h2 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.grid { display: grid; gap: 16px; grid-template-columns: 1fr; }
+@media (min-width: 640px) {
+  .grid { grid-template-columns: 1fr 1fr; }
+}
+
+.project {
+  display: flex;
+  flex-direction: column;
+  background: var(--card);
+  color: inherit;
+  text-decoration: none;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1.5px solid transparent;
+  box-shadow: 0 1px 2px rgba(20, 35, 59, .06), 0 6px 18px rgba(20, 35, 59, .06);
+  transition: transform .15s, border-color .15s;
+}
+.project:hover { transform: translateY(-3px); border-color: var(--accent); }
+
+/* Imagen de la tarjeta (captura o icono) */
+.thumb {
+  aspect-ratio: 16 / 10;
+  background: var(--tag-bg);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  color: var(--accent);
+  font-size: 3rem;
+  font-weight: 800;
+}
+.thumb::after { content: attr(data-initial); }
+.thumb:has(img)::after { content: none; }
+.thumb img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+/* Para un icono en vez de una captura: <div class="thumb icon"> */
+.thumb.icon img { object-fit: contain; object-position: center; padding: 28px; }
+
+.project .body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 20px 24px 24px;
+  flex: 1;
+}
+.project h3 { font-size: 1.25rem; font-weight: 800; line-height: 1.2; }
+.project p { color: var(--muted); font-size: .95rem; flex: 1; }
+.project .go { color: var(--accent); font-weight: 600; font-size: .95rem; margin-top: 4px; }
+
+/* =========================================================
+   PÁGINA DE PROYECTO  (body.detail)
+   ========================================================= */
+
+.back {
+  justify-self: start;
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+}
+.back:hover { text-decoration: underline; }
+
+.detail .card {
+  background: var(--card);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(20, 35, 59, .06), 0 12px 32px rgba(20, 35, 59, .08);
+}
+
+/* Imagen grande */
+.hero {
+  aspect-ratio: 16 / 9;
+  background: var(--tag-bg);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  color: var(--accent);
+  font-size: 5rem;
+  font-weight: 800;
+}
+.hero::after { content: attr(data-initial); }
+.hero:has(img)::after { content: none; }
+.hero img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+
+.content { padding: 32px 32px 36px; }
+.detail .tags { margin-bottom: 14px; }
+
+.detail h1 {
+  font-size: clamp(2.2rem, 8vw, 3rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+.lead { margin-top: 12px; font-size: 1.15rem; color: var(--muted); }
+
+.meta {
+  margin-top: 24px;
+  padding: 16px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 12px 24px;
+}
+.meta dt { font-size: .8rem; color: var(--muted); }
+.meta dd { margin: 0; font-weight: 600; }
+
+.detail h2 { margin-top: 28px; font-size: 1.25rem; font-weight: 800; }
+.content p { margin-top: 8px; color: var(--muted); }
+
+.stack { list-style: none; padding: 0; margin-top: 10px; display: flex; flex-wrap: wrap; gap: 8px; }
+.stack li {
+  padding: 4px 12px;
+  border: 1.5px solid var(--line);
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: .9rem;
+}
+
+.actions { margin-top: 32px; display: flex; flex-wrap: wrap; gap: 10px; }
+.btn {
+  padding: 12px 20px;
+  border-radius: 12px;
+  border: 1.5px solid var(--line);
+  color: var(--ink);
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color .15s, border-color .15s, color .15s;
+}
+.btn:hover { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.btn.primary:hover { filter: brightness(1.08); }
+
+@media (max-width: 480px) {
+  .content { padding: 24px 20px 28px; }
+}
+
+/* ---------- Accesibilidad: sin animaciones si el usuario lo pide ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .links a, .btn, .project { transition: none; }
+  .project:hover { transform: none; }
+}

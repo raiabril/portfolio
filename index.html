@@ -1,251 +1,78 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XS724BK2ZN"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <script async
+    src="https://www.googletagmanager.com/gtag/js?id=G-XS724BK2ZN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
 
-  gtag('config', 'G-XS724BK2ZN');
-</script>
+    gtag('config', 'G-XS724BK2ZN');
+  </script>
 
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Rai</title>
-  <meta name="description" content="Tarjeta de presentación y proyectos de Rai">
- 
+  <meta name="description" content="Mi proyectos personales">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap" rel="stylesheet">
- 
-  <style>
-    :root {
-      --bg: #e6edf2;
-      --card: #ffffff;
-      --ink: #14233b;
-      --muted: #55657a;
-      --accent: #1f6f8b;
-      --accent-ink: #ffffff;
-      --tag-bg: #e3f0f5;
-      --line: #d3dde6;
-      --font: "Bricolage Grotesque", "Segoe UI", system-ui, -apple-system, sans-serif;
-    }
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --bg: #101a28;
-        --card: #182536;
-        --ink: #eaf1f7;
-        --muted: #9db0c3;
-        --accent: #62b6d1;
-        --accent-ink: #0d1722;
-        --tag-bg: #223a4d;
-        --line: #2a3b50;
-      }
-    }
- 
-    * { box-sizing: border-box; margin: 0; }
- 
-    body {
-      font-family: var(--font);
-      background: var(--bg);
-      color: var(--ink);
-      padding: 40px 16px 56px;
-      min-height: 100vh;
-      line-height: 1.55;
-    }
- 
-    .page {
-      max-width: 720px;
-      margin: 0 auto;
-      display: grid;
-      gap: 48px;
-    }
- 
-    /* ---------- Tarjeta de presentación ---------- */
-    .card {
-      width: 100%;
-      max-width: 420px;
-      justify-self: center;
-      background: var(--card);
-      border-radius: 20px;
-      padding: 40px 32px 32px;
-      text-align: center;
-      box-shadow: 0 1px 2px rgba(20, 35, 59, .06), 0 12px 32px rgba(20, 35, 59, .08);
-    }
- 
-    .photo {
-      width: 128px;
-      height: 128px;
-      border-radius: 50%;
-      margin: 0 auto 24px;
-      overflow: hidden;
-      background: var(--accent);
-      color: var(--accent-ink);
-      display: grid;
-      place-items: center;
-      font-size: 3.5rem;
-      font-weight: 800;
-    }
-    .photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
- 
-    h1 {
-      font-size: clamp(2.6rem, 11vw, 3.4rem);
-      font-weight: 800;
-      line-height: 1.05;
-      letter-spacing: -0.02em;
-    }
- 
-    .title { margin-top: 8px; color: var(--accent); font-weight: 600; font-size: 1.1rem; }
- 
-    .about { margin: 20px auto 0; color: var(--muted); max-width: 34ch; }
- 
-    .links {
-      list-style: none;
-      padding: 24px 0 0;
-      margin-top: 32px;
-      border-top: 1px solid var(--line);
-      display: grid;
-      gap: 10px;
-    }
-    .links a {
-      display: block;
-      padding: 12px 16px;
-      border-radius: 12px;
-      border: 1.5px solid var(--line);
-      color: var(--ink);
-      font-weight: 600;
-      text-decoration: none;
-      transition: background-color .15s, border-color .15s, color .15s;
-    }
-    .links a:hover { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
-    .links a.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
-    .links a.primary:hover { filter: brightness(1.08); }
- 
-    /* ---------- Proyectos ---------- */
-    .projects h2 {
-      font-size: 1.5rem;
-      font-weight: 800;
-      letter-spacing: -0.01em;
-      margin-bottom: 16px;
-      text-align: center;
-    }
- 
-    .grid {
-      display: grid;
-      gap: 16px;
-      grid-template-columns: 1fr;
-    }
-    @media (min-width: 640px) {
-      .grid { grid-template-columns: 1fr 1fr; }
-    }
- 
-    .project {
-  display: flex;
-  flex-direction: column;
-  background: var(--card);
-  color: inherit;
-  text-decoration: none;
-  border-radius: 16px;
-  overflow: hidden;
-  border: 1.5px solid transparent;
-  box-shadow: 0 1px 2px rgba(20, 35, 59, .06), 0 6px 18px rgba(20, 35, 59, .06);
-  transition: transform .15s, border-color .15s;
-}
-.project:hover { transform: translateY(-3px); border-color: var(--accent); }
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap"
+    rel="stylesheet">
 
-/* Imagen de la tarjeta (captura o icono) */
-.thumb {
-  aspect-ratio: 16 / 10;
-  background: var(--tag-bg);
-  display: grid;
-  place-items: center;
-  overflow: hidden;
-  color: var(--accent);
-  font-size: 3rem;
-  font-weight: 800;
-}
-.thumb::after { content: attr(data-initial); }
-.thumb:has(img)::after { content: none; }
-.thumb img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
-.thumb.icon img { object-fit: contain; object-position: center; padding: 28px; }
-
-.body {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding: 20px 24px 24px;
-  flex: 1;
-}
-
-.tags { display: flex; flex-wrap: wrap; gap: 6px; }
-.tag {
-  padding: 2px 10px;
-  border-radius: 999px;
-  background: var(--tag-bg);
-  color: var(--accent);
-  font-size: .8rem;
-  font-weight: 600;
-}
-.project h3 { font-size: 1.25rem; font-weight: 800; line-height: 1.2; }
-.project p { color: var(--muted); font-size: .95rem; flex: 1; }
-.project .go { color: var(--accent); font-weight: 600; font-size: .95rem; margin-top: 4px; }
- 
-    a:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
- 
-    @media (prefers-reduced-motion: reduce) {
-      .links a, .project { transition: none; }
-      .project:hover { transform: none; }
-    }
-  </style>
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body>
- 
+
+<body class="home">
+
   <div class="page">
- 
+
     <main class="card">
 
+      <div class="photo">
+        <img src="assets/img/foto.jpg" alt="Foto de Rai"
+          onerror="this.remove(); document.querySelector('.photo').textContent = 'R';">
+      </div>
 
-    <!-- FOTO: guarda tu imagen como "foto.jpg" junto a este archivo.
-         Si no existe, se muestra la inicial de tu nombre. -->
-    <div class="photo">
-      <img src="assets/foto.jpg" alt="Foto de Rai"
-           onerror="this.remove(); document.querySelector('.photo').textContent = 'R';">
-    </div>
+      <h1>Rai Abril López</h1>
 
-    <!-- NOMBRE -->
-    <h1>Rai Abril López</h1>
+      <p class="title">Arquitecto de transformación digital</p>
 
-    <!-- TÍTULO -->
-    <p class="title">Arquitecto de transformación digital</p>
+      <p class="about">
+        Ingeniero Industrial con trayectoria en IT. Diseño cómo las empresas
+        pasan de procesos manuales a sistemas que funcionan: arquitectura,
+        datos, automatización e IA, con visión técnica y de negocio.
+      </p>
 
-    <!-- TEXTO -->
-    <p class="about">
-      Ingeniero Industrial con trayectoria en IT. Diseño cómo las empresas pasan de procesos manuales a sistemas que funcionan: arquitectura, datos, automatización e IA, con visión técnica y de negocio.
-    </p>
+      <ul class="links">
+        <li><a
+            href="https://www.linkedin.com/in/raimundo-abril-l%C3%B3pez-a700143a/"
+            target="_blank" rel="noopener">
+            <img src="assets/img/linkedin.png" width="20" height="auto"
+              alt="linkedin logo"></img> LinkedIn</a></li>
+        <li><a href="https://github.com/raiabril/" target="_blank"
+            rel="noopener">
+            <img src="assets/img/github.png" width="20" height="auto"
+              alt="GitHub logo"></img> GitHub</a></li>
+        <li><a href="mailto:raiablp@gmail.com">Escríbeme</a></li>
+      </ul>
 
-    <!-- ENLACES: cambia las URLs y añade o quita los que quieras -->
-    <ul class="links">
-      <li><a href="https://www.linkedin.com/in/raimundo-abril-l%C3%B3pez-a700143a/" target="_blank" rel="noopener">
-        <img src="assets/linkedin.png" width="20" height="auto" alt="linkedin logo"></img> LinkedIn</a></li>
-      <li><a href="https://github.com/raiabril/" target="_blank" rel="noopener">
-        <img src="assets/github.png" width="20" height="auto" alt="GitHub logo"></img> GitHub</a></li>
-      <li><a href="mailto:raiablp@gmail.com">Escríbeme</a></li>
-    </ul>
+    </main>
 
-  </main>
-
-      <!-- PROYECTOS: ejemplo con datos inventados. Copia o borra bloques <a class="project"> -->
     <section class="projects" aria-labelledby="proyectos">
       <h2 id="proyectos">Proyectos</h2>
- 
+
       <div class="grid">
 
-        <a class="project" href="#">
+        <a class="project" href="projects/polymarket.html">
           <div class="thumb" data-initial="P">
-            <img src="img/planea.jpg" alt="Captura de Planea" loading="lazy" onerror="this.remove()">
+            <img src="assets/img/polymarket.png" alt="Captura de Planea"
+              loading="lazy" onerror="this.remove()">
           </div>
           <div class="body">
             <div class="tags">
@@ -253,14 +80,19 @@
               <span class="tag">Python</span>
             </div>
             <h3>Trading algorítmico en mercados de predicción</h3>
-            <p>Proyecto personal para aprender trading quantitativo end to end, desde fundamentos de micro-mercado a infraestructura contra-latencia, con algoritmos de ML para la predicción usando diferentes estrategias de ejecución, endgamer, sniper y market making.</p>
+            <p>Proyecto personal para aprender trading quantitativo end to end,
+              desde fundamentos de micro-mercado a infraestructura
+              contra-latencia, con algoritmos de ML para la predicción usando
+              diferentes estrategias de ejecución, endgamer, sniper y market
+              making.</p>
             <span class="go">Ver proyecto</span>
           </div>
         </a>
 
         <a class="project" href="https://centsfinder.es">
           <div class="thumb" data-initial="P">
-            <img src="img/planea.jpg" alt="Captura de Planea" loading="lazy" onerror="this.remove()">
+            <img src="img/planea.jpg" alt="Captura de Planea" loading="lazy"
+              onerror="this.remove()">
           </div>
           <div class="body">
             <div class="tags">
@@ -268,14 +100,16 @@
               <span class="tag">Python</span>
             </div>
             <h3>Centsfinder</h3>
-            <p>Plataforma conectando empresas y start-ups con programas de inversión pública y consultores.</p>
+            <p>Plataforma conectando empresas y start-ups con programas de
+              inversión pública y consultores.</p>
             <span class="go">Ver proyecto</span>
           </div>
-        </a>   
+        </a>
 
         <a class="project" href="https://github.com/doctor-data/live">
           <div class="thumb" data-initial="P">
-            <img src="img/planea.jpg" alt="Captura de Planea" loading="lazy" onerror="this.remove()">
+            <img src="img/planea.jpg" alt="Captura de Planea" loading="lazy"
+              onerror="this.remove()">
           </div>
           <div class="body">
             <div class="tags">
@@ -283,14 +117,17 @@
               <span class="tag">Python</span>
             </div>
             <h3>Doctor data</h3>
-            <p>Bot en Telegram para corregir incidencias en la base de datos de mobiliario público del Ayuntamiento de Madrid. Proyecto de Medialab Prado.</p>
+            <p>Bot en Telegram para corregir incidencias en la base de datos de
+              mobiliario público del Ayuntamiento de Madrid. Proyecto de
+              Medialab Prado.</p>
             <span class="go">Ver proyecto</span>
           </div>
-        </a>   
+        </a>
 
         <a class="project" href="https://soydetemporada.es">
           <div class="thumb" data-initial="P">
-            <img src="img/planea.jpg" alt="Captura de Planea" loading="lazy" onerror="this.remove()">
+            <img src="img/planea.jpg" alt="Captura de Planea" loading="lazy"
+              onerror="this.remove()">
           </div>
           <div class="body">
             <div class="tags">
@@ -298,28 +135,33 @@
               <span class="tag">Python</span>
             </div>
             <h3>Soy de temporada</h3>
-            <p>Calendario de temporada elaborado a través de cientos de calendarios de productores locales. Proyecto de Medialab Prado, Workshop Visualizar 2017 y en medios El País, Premios Xataka.</p>
+            <p>Calendario de temporada elaborado a través de cientos de
+              calendarios de productores locales. Proyecto de Medialab Prado,
+              Workshop Visualizar 2017 y en medios El País, Premios Xataka.</p>
             <span class="go">Ver proyecto</span>
           </div>
-        </a>   
+        </a>
 
         <a class="project" href="https://naosinfosec.com">
           <div class="thumb" data-initial="P">
-            <img src="img/planea.jpg" alt="Captura de Planea" loading="lazy" onerror="this.remove()">
+            <img src="img/planea.jpg" alt="Captura de Planea" loading="lazy"
+              onerror="this.remove()">
           </div>
           <div class="body">
             <div class="tags">
               <span class="tag">Cybersecurity</span>
             </div>
             <h3>naosinfosec.com</h3>
-            <p>Blog sobre ciberseguridad, write-ups técnicos y resolución de máquinas.</p>
+            <p>Blog sobre ciberseguridad, write-ups técnicos y resolución de
+              máquinas.</p>
             <span class="go">Ver proyecto</span>
           </div>
-        </a>  
+        </a>
 
       </div>
     </section>
 
 
 </body>
+
 </html>

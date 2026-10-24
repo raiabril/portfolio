@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Planea | Rai</title>
+  <meta name="description" content="Panel para gestionar reformas: fases, presupuesto y documentos.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body class="detail">
+
+  <div class="page">
+
+    <a class="back" href="index.html">Volver</a>
+
+    <main class="card">
+
+      <!-- IMAGEN GRANDE: guarda la captura en img/ y cambia el nombre.
+           Si no existe, se muestra la inicial del proyecto. -->
+      <div class="hero" data-initial="P">
+        <img src="img/planea-grande.jpg" alt="Captura de Planea" onerror="this.remove()">
+      </div>
+
+      <div class="content">
+
+        <div class="tags">
+          <span class="tag">App web</span>
+          <span class="tag">Python</span>
+        </div>
+
+        <!-- TÍTULO Y RESUMEN -->
+        <h1>Planea</h1>
+        <p class="lead">
+          Panel para gestionar reformas: fases, presupuesto y documentos de cada obra en un solo sitio.
+        </p>
+
+        <!-- FICHA RÁPIDA: añade o quita pares dt/dd -->
+        <dl class="meta">
+          <div><dt>Año</dt><dd>2026</dd></div>
+          <div><dt>Rol</dt><dd>Diseño y desarrollo</dd></div>
+          <div><dt>Estado</dt><dd>En producción</dd></div>
+        </dl>
+
+        <!-- DESCRIPCIÓN DETALLADA: repite bloques h2 + p las veces que necesites -->
+        <h2>El problema</h2>
+        <p>
+          Cada reforma generaba un reguero de correos, hojas de cálculo y PDFs sueltos.
+          Clientes y equipo preguntaban lo mismo una y otra vez: en qué fase está la obra,
+          cuánto se ha gastado y dónde está el último presupuesto.
+        </p>
+
+        <h2>La solución</h2>
+        <p>
+          Un panel único por obra con las fases, el presupuesto frente al gasto real y los
+          documentos ordenados. El cliente entra con un enlace y ve el estado sin tener que
+          preguntar a nadie.
+        </p>
+
+        <h2>El resultado</h2>
+        <p>
+          Menos mensajes de seguimiento, presupuestos siempre actualizados y una única fuente
+          de verdad para todo el equipo.
+        </p>
+
+        <h2>Tecnología</h2>
+        <ul class="stack">
+          <li>Python</li>
+          <li>Django</li>
+          <li>PostgreSQL</li>
+          <li>Docker</li>
+        </ul>
+
+        <!-- ENLACES: cambia las URLs o borra los que no apliquen -->
+        <div class="actions">
+          <a class="btn primary" href="#" target="_blank" rel="noopener">Ver demo</a>
+          <a class="btn" href="#" target="_blank" rel="noopener">Código</a>
+        </div>
+
+      </div>
+    </main>
+
+  </div>
+
+</body>
+</html>
