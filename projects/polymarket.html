@@ -119,7 +119,7 @@
           pipelines de datos en Polars y Parquet, y modelos de LightGBM, XGBoost
           con cabezas separadas
           para SÍ y NO, alimentados con múltiples variables, microestructura del
-          mercado, libro de órdenes con sus niveles, y técnicas clásicas
+          mercado (OFI, imbalance), libro de órdenes con sus niveles, y técnicas clásicas
           (suelos, resistencias). Feature ablation
           para extracción de las más significativas.
         </p>
@@ -135,17 +135,26 @@
           bootstrap, trazabilidad
           de cada decisión y validación en sombra con criterios fijados de
           antemano.
+          Criterios N, LB95, bootstrap CI95, Bonferroni, GroupKFold.
         </p>
         <p>
-          Estrategias diversas, desde arbitraje puro de latencia con Black-Scholes Digital, a modelos sniper con LGBM/XGB, endgamers
-          aprovechando los últimos instantes de liquidez, hasta market making y parity arbitrage.
+          Estrategias diversas, desde arbitraje puro de latencia con
+          Black-Scholes Digital, a modelos sniper con LGBM/XGB, endgamers
+          aprovechando los últimos instantes de liquidez, hasta market making y
+          parity arbitrage.
+        </p>
+        <p>
+          Cálculos realistas, usando on-chain y con estimaciones de slipagge y
+          fees realistas. Con atención al régimen de mercado, determinista o near-strike.
         </p>
 
         <h2>El resultado</h2>
         <p>
-          Una plataforma reproducible y auditable, con una arquitectura basada en eventos, capaz de responder en ms y probar docenas de
+          Una plataforma reproducible y auditable, con una arquitectura basada
+          en eventos, capaz de responder en ms y probar docenas de
           estrategias (predicción,
-          market making, endgame), tanto en real como en backtest, y descartar con evidencia las que no funcionan
+          market making, endgame), tanto en real como en backtest, y descartar
+          con evidencia las que no funcionan
           controlando el capital en riesgo.
         </p>
 
