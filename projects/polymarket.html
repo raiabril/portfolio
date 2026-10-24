@@ -2,11 +2,25 @@
 <html lang="es">
 
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async
+    src="https://www.googletagmanager.com/gtag/js?id=G-XS724BK2ZN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-XS724BK2ZN');
+  </script>
+
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Planea | Rai</title>
-  <meta name="description"
-    content="Panel para gestionar reformas: fases, presupuesto y documentos.">
+  <title>Trading algorítmico en mercados de predicción</title>
+  <meta name="description" content="Proyecto personal para aprender trading quantitativo end to end,
+              desde fundamentos de micro-mercado a infraestructura
+              contra-latencia, con algoritmos de ML para la predicción usando
+              diferentes estrategias de ejecución, endgamer, sniper y market
+              making.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,21 +40,25 @@
     <main class="card">
 
       <div class="hero" data-initial="P">
-        <img src="img/planea-grande.jpg" alt="Captura de Planea"
+        <img src="../assets/img/polymarket.png" alt="polymarket"
           onerror="this.remove()">
       </div>
 
       <div class="content">
 
         <div class="tags">
-          <span class="tag">App web</span>
+          <span class="tag">Data</span>
           <span class="tag">Python</span>
+          <span class="tag">Cloud</span>
         </div>
 
-        <h1>Planea</h1>
+        <h1>Trading algorítmico en mercados de predicción</h1>
         <p class="lead">
-          Panel para gestionar reformas: fases, presupuesto y documentos de cada
-          obra en un solo sitio.
+          Proyecto personal para aprender trading quantitativo end to end,
+          desde fundamentos de micro-mercado a infraestructura
+          contra-latencia, con algoritmos de ML para la predicción usando
+          diferentes estrategias de ejecución, endgamer, sniper y market
+          making.
         </p>
 
         <dl class="meta">
@@ -50,51 +68,101 @@
           </div>
           <div>
             <dt>Rol</dt>
-            <dd>Diseño y desarrollo</dd>
+            <dd>Investigación y desarrollo</dd>
           </div>
           <div>
             <dt>Estado</dt>
-            <dd>En producción</dd>
+            <dd>Incubadora</dd>
           </div>
         </dl>
 
+        <h2>TL;DR</h2>
+        <p>
+        <ul>
+          <li>Es un mercado muy líquido, perfectamente arbitrado, donde el
+            precio ya refleja toda la información disponible.</li>
+          <li>Los 250ms de taker y fee en polymarket hacen inviable una
+            estrategia pura no informada.</li>
+
+          <li>Market maker no sobrevive de los rewards. Los flujos informados te
+            comen.
+          </li>
+          <li>Se requiere investigar contratando los data streams de chainlink
+            directamente.</li>
+        </ul>
+        </p>
+
+
         <h2>El problema</h2>
         <p>
-          Cada reforma generaba un reguero de correos, hojas de cálculo y PDFs
-          sueltos.
-          Clientes y equipo preguntaban lo mismo una y otra vez: en qué fase
-          está la obra,
-          cuánto se ha gastado y dónde está el último presupuesto.
+          Los mercados de predicción de BTC a 5 minutos en Polymarket se mueven
+          en milisegundos y los
+          precios se desvían de la probabilidad real solo durante ventanas muy
+          cortas. Operarlos a mano
+          es inviable, y los bots de código abierto no ofrecían una ventaja
+          medible. Hacía falta un sistema
+          que decidiera con datos, con baja latencia y sin autoengañarse al
+          validar.
         </p>
+        <p>La base teórica es el modelo de Black-Scholes para opciones
+          digitales: cada contrato de
+          Polymarket es, en esencia, una opción binaria sobre si BTC cerrará por
+          encima de un precio de
+          referencia al terminar los 5 minutos. Esa probabilidad teórica sirve
+          de punto de partida
+          para compararla con el precio real del mercado.</p>
 
         <h2>La solución</h2>
         <p>
-          Un panel único por obra con las fases, el presupuesto frente al gasto
-          real y los
-          documentos ordenados. El cliente entra con un enlace y ve el estado
-          sin tener que
-          preguntar a nadie.
+          Un sistema cuantitativo de principio a fin: recolectores WebSocket del
+          libro de órdenes, fuentes externas como binance o coinbase,
+          pipelines de datos en Polars y Parquet, y modelos de LightGBM, XGBoost
+          con cabezas separadas
+          para SÍ y NO, alimentados con múltiples variables, microestructura del
+          mercado, libro de órdenes con sus niveles, y técnicas clásicas
+          (suelos, resistencias). Feature ablation
+          para extracción de las más significativas.
+        </p>
+        <p>
+          Se despliega con
+          Docker en AWS (Irlanda), por proximidad polymarket AWS (Londres).
+          Corre allí pero no se puede hacer trading desde la AWS de Londres...
+        </p>
+        <p>
+          Cada cambio sigue un método estricto:
+          hipótesis registradas antes de
+          probar, validación cruzada por grupos, intervalos de confianza por
+          bootstrap, trazabilidad
+          de cada decisión y validación en sombra con criterios fijados de
+          antemano.
+        </p>
+        <p>
+          Estrategias diversas, desde arbitraje puro de latencia con Black-Scholes Digital, a modelos sniper con LGBM/XGB, endgamers
+          aprovechando los últimos instantes de liquidez, hasta market making y parity arbitrage.
         </p>
 
         <h2>El resultado</h2>
         <p>
-          Menos mensajes de seguimiento, presupuestos siempre actualizados y una
-          única fuente
-          de verdad para todo el equipo.
+          Una plataforma reproducible y auditable, capaz de probar docenas de
+          estrategias (predicción,
+          market making, endgame) y descartar con evidencia las que no funcionan
+          antes de arriesgar capital.
         </p>
 
         <h2>Tecnología</h2>
         <ul class="stack">
           <li>Python</li>
-          <li>Django</li>
-          <li>PostgreSQL</li>
+          <li>Polars</li>
+          <li>Parquet</li>
+          <li>XGBoost</li>
+          <li>LightGBM</li>
+          <li>WebSockets</li>
           <li>Docker</li>
+          <li>AWS</li>
         </ul>
 
         <div class="actions">
-          <a class="btn primary" href="#" target="_blank" rel="noopener">Ver
-            demo</a>
-          <a class="btn" href="#" target="_blank" rel="noopener">Código</a>
+          <a class="btn primary" href="mailto:raiablp@gmail.com">Contacto</a>
         </div>
 
       </div>
