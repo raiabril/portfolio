@@ -16,11 +16,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Trading algorítmico en mercados de predicción</title>
-  <meta name="description" content="Proyecto personal para aprender trading quantitativo end to end,
-              desde fundamentos de micro-mercado a infraestructura
-              contra-latencia, con algoritmos de ML para la predicción usando
-              diferentes estrategias de ejecución, endgamer, sniper y market
-              making.">
+  <meta name="description"
+    content="Proyecto personal para aprender trading cuantitativo de principio a fin, desde los fundamentos de microestructura de mercado hasta una infraestructura de baja latencia, con modelos de ML para la predicción y distintas estrategias de ejecución: endgame, sniper y market making.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -72,23 +69,21 @@
           </div>
           <div>
             <dt>Estado</dt>
-            <dd>Incubadora</dd>
+            <dd>En investigación</dd>
           </div>
         </dl>
 
         <h2>TL;DR</h2>
         <p>
         <ul>
-          <li>Es un mercado muy líquido, perfectamente arbitrado, donde el
-            precio ya refleja toda la información disponible.</li>
-          <li>Los 250ms de taker y fee en polymarket hacen inviable una
-            estrategia pura no informada.</li>
-
-          <li>Market maker no sobrevive de los rewards. Los flujos informados te
-            comen.
-          </li>
-          <li>Se requiere investigar contratando los data streams de chainlink
-            directamente.</li>
+          <li>Es un mercado muy líquido y muy bien arbitrado: el precio ya
+            refleja casi toda la información disponible.</li>
+          <li>El retardo de 250 ms para órdenes taker y las comisiones de
+            Polymarket hacen inviable una estrategia pura no informada.</li>
+          <li>El market making no sobrevive solo con los rewards: el flujo
+            informado se come el margen.</li>
+          <li>La siguiente línea de investigación pasa por contratar
+            directamente los data streams de Chainlink.</li>
         </ul>
         </p>
 
@@ -96,69 +91,77 @@
         <h2>El problema</h2>
         <p>
           Los mercados de predicción de BTC a 5 minutos en Polymarket se mueven
-          en milisegundos y los
-          precios se desvían de la probabilidad real solo durante ventanas muy
-          cortas. Operarlos a mano
-          es inviable, y los bots de código abierto no ofrecían una ventaja
-          medible. Hacía falta un sistema
-          que decidiera con datos, con baja latencia y sin autoengañarse al
-          validar.
+          en milisegundos y operarlos
+          a mano es inviable. La hipótesis de partida era que, durante ventanas
+          muy cortas, el precio se
+          desvía de la probabilidad real y que un sistema con datos y baja
+          latencia podría explotarlo,
+          validándolo sin autoengañarse. Los bots de código abierto no ofrecían
+          una ventaja medible.
         </p>
-        <p>La base teórica es el modelo de Black-Scholes para opciones
-          digitales: cada contrato de
-          Polymarket es, en esencia, una opción binaria sobre si BTC cerrará por
-          encima de un precio de
-          referencia al terminar los 5 minutos. Esa probabilidad teórica sirve
-          de punto de partida
-          para compararla con el precio real del mercado.</p>
+        <p>
+          La base teórica es el modelo de Black-Scholes para opciones digitales:
+          cada contrato es, en
+          esencia, una opción binaria sobre si BTC cerrará por encima de un
+          precio de referencia al
+          terminar los 5 minutos. Esa probabilidad teórica sirve de punto de
+          partida para compararla con
+          el precio real del mercado.
+        </p>
 
         <h2>La solución</h2>
         <p>
           Un sistema cuantitativo de principio a fin: recolectores WebSocket del
-          libro de órdenes, fuentes externas como binance o coinbase,
-          pipelines de datos en Polars y Parquet, y modelos de LightGBM, XGBoost
-          con cabezas separadas
-          para SÍ y NO, alimentados con múltiples variables, microestructura del
-          mercado (OFI, imbalance), libro de órdenes con sus niveles, y técnicas
-          clásicas
-          (suelos, resistencias). Feature ablation
-          para extracción de las más significativas y grid search para la
-          determinación de parámetros operativos y triggers óptimos.
+          libro de órdenes, fuentes
+          externas como Binance y Coinbase, pipelines de datos en Polars y
+          Parquet, y modelos LightGBM y
+          XGBoost con cabezas separadas para SÍ y NO. Se alimentan de
+          microestructura (OFI, imbalance), del
+          libro de órdenes por niveles y de técnicas clásicas (soportes y
+          resistencias). La selección de
+          variables se hace con feature ablation, y los parámetros operativos y
+          los triggers óptimos, con
+          grid search.
         </p>
         <p>
-          Se despliega con
-          Docker en AWS (Irlanda), por proximidad polymarket AWS (Londres).
-          Corre allí pero no se puede hacer trading desde la AWS de Londres...
+          Se despliega con Docker en AWS Irlanda. Polymarket aloja su
+          infraestructura en AWS Londres, pero
+          desde allí no se permite operar, así que Irlanda es la región
+          permitida más cercana.
         </p>
         <p>
-          Cada cambio sigue un método estricto:
-          hipótesis registradas antes de
-          probar, validación cruzada por grupos, intervalos de confianza por
-          bootstrap, trazabilidad
-          de cada decisión y validación en sombra con criterios fijados de
-          antemano.
-          Criterios N, LB95, bootstrap CI95, Bonferroni, GroupKFold.
+          Cada cambio sigue un método estricto: hipótesis registradas antes de
+          probar, validación cruzada
+          por grupos (GroupKFold), intervalos de confianza por bootstrap (CI95),
+          corrección de Bonferroni,
+          trazabilidad de cada decisión y validación en sombra con criterios
+          fijados de antemano (N, LB95).
         </p>
         <p>
-          Estrategias diversas, desde arbitraje puro de latencia con
-          Black-Scholes Digital, a modelos sniper con LGBM/XGB, endgamers
-          aprovechando los últimos instantes de liquidez, hasta market making y
-          parity arbitrage.
-        </p>
-        <p>
-          Cálculos realistas, usando on-chain y con estimaciones de slipagge y
-          fees realistas. Con atención al régimen de mercado, determinista o
-          near-strike.
+          Las estrategias van desde el arbitraje puro de latencia con
+          Black-Scholes digital hasta modelos
+          sniper con LightGBM y XGBoost, endgamers que aprovechan los últimos
+          instantes de liquidez, market
+          making y arbitraje de paridad. Los cálculos son realistas: usan datos
+          on-chain y estimaciones
+          realistas de slippage y comisiones, con atención al régimen de mercado
+          (determinista o near-strike).
         </p>
 
         <h2>El resultado</h2>
         <p>
-          Una plataforma reproducible y auditable, con una arquitectura basada
-          en eventos, capaz de responder en ms y probar docenas de
-          estrategias (predicción,
-          market making, endgame), tanto en real como en backtest, y descartar
-          con evidencia las que no funcionan
-          controlando el capital en riesgo.
+          Una plataforma reproducible y auditable, con arquitectura basada en
+          eventos, capaz de responder
+          en milisegundos y de probar docenas de estrategias, tanto en real como
+          en backtest, y de
+          descartar con evidencia las que no funcionan controlando el capital en
+          riesgo.
+        </p>
+        <p>
+          La conclusión principal es que la ventaja no está en la ejecución sino
+          en la calidad de los
+          datos, y el siguiente paso es investigar con los data streams de
+          Chainlink directamente.
         </p>
 
         <h2>Tecnología</h2>
@@ -172,6 +175,8 @@
           <li>Docker</li>
           <li>AWS</li>
         </ul>
+
+        <p><small>Proyecto de investigación personal. No constituye asesoramiento financiero.</small></p>
 
         <div class="actions">
           <a class="btn primary" href="mailto:raiablp@gmail.com">Contacto</a>
